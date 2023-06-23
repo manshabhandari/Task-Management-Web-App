@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask-MongoDB Task Management App</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <br><br>
+        <h1><center><u>Task Management App</u></center></h1>
+
+        <h3><center><a href="{{ url_for('home')}}">Home Page</a> -- <a href="{{ url_for('read')}}">Task View</a> -- <a href="{{ url_for('create')}}">Add a Task</a></center></h3>
+        <p>
+          
+          
+        </p>
+      </header>
+      <main> {% block container %} {% endblock %}</main>
+      
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<h2>Task View</h2>
+
+<p> All of your tasks in a table. Here are some important need-to-knows:</p>
+<ul>
+    <li>Priority: High = 1, Medium = 2, Low = 3</li>
+    <li>Deadline: Your deadline in the format yyyy-mm-dd</li>
+    <li> Progress: Your progress on a scale of 1-100</li>
+</ul>
+
+<!-- Table with view of all the tasks as inputted by the user-->
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Priority</th>
+                <th>Deadline</th>
+                <th>Progress</th>
+                <th>Other</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in docs %}
+            <tr>
+                <td>{{ doc.name }}</td>
+                <td>{{ doc.priority }}</td>
+                <td>{{ doc.deadline }}</td>
+                <td>{{ doc.progress }}</td>
+                <td>
+                    <a href="{{ url_for('edit', mongoid=doc._id) }}">Edit</a> |
+                    <a href="{{ url_for('delete', mongoid=doc._id) }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- Style aspects of the page -->
+<style>
+    .table-bordered {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-bordered th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+</style>
+{% endblock %}
